@@ -1,8 +1,8 @@
-import image404 from "./Images/Svg/404-error.svg";
+import image404 from "../../Images/Svg/404-error.svg";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const Course = ({
+const CourseCard = ({
   idCourse,
   title,
   courseImage,
@@ -43,7 +43,7 @@ const Course = ({
   );
 };
 
-Course.propTypes = {
+CourseCard.propTypes = {
   title: PropTypes.string,
   courseImage: PropTypes.string,
   teacher: PropTypes.string,
@@ -51,7 +51,7 @@ Course.propTypes = {
   price: PropTypes.number,
 };
 
-Course.defaultProps = {
+CourseCard.defaultProps = {
   title: "Title not loaded",
   courseImage: image404,
   teacher: "Teacher nor found",
@@ -59,4 +59,4 @@ Course.defaultProps = {
   price: 0,
 };
 
-export default Course;
+export default CourseCard;

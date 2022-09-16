@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import logoNotFound from "./Images/Svg/404-error.svg";
+import logoNotFound from "../../Images/Svg/404-error.svg";
 
 const courses = [
   {

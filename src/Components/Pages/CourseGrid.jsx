@@ -1,5 +1,4 @@
-import Course from "./Course";
-//import { v4 as uuid } from "uuid";
+import CourseCard from "../Organisms/CourseCard";
 
 const courses = [
   {
@@ -58,7 +57,7 @@ const CourseGrid = () => {
   return (
     <div className="ed-grid m-grid-3">
       {courses.map((course) => {
-        return <Course key={course.id} {...course} />;
+        return <CourseCard key={course.id} {...course} />;
       })}
     </div>
   );

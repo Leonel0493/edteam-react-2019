@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import img404 from "./Images/Svg/404-error.svg";
+import img404 from "../../Images/Svg/404-error.svg";
 
 function Banner({
   bannerImage,
