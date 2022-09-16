@@ -1,12 +1,23 @@
 import image404 from "./Images/Svg/404-error.svg";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const Curso = ({ title, courseImage, teacher, teacherImage, price }) => {
+const Course = ({
+  idCourse,
+  title,
+  courseImage,
+  teacher,
+  teacherImage,
+  price,
+}) => {
   return (
     <article className="card">
       <div className="img-container s-ratio-16-9 s-radius-tr s-radius-tl">
-        <img src={courseImage} alt={title} />
+        <Link to={`/courses/${idCourse}`}>
+          <img src={courseImage} alt={title} />
+        </Link>
       </div>
+
       <div className="card__data s-border s-radius-br s-radius-bl s-pxy-2">
         <h3 className="t5 s-mb-2 s-center">{title}</h3>
         <div className="s-mb-2 s-main-center">
@@ -20,16 +31,19 @@ const Curso = ({ title, courseImage, teacher, teacherImage, price }) => {
           </div>
         </div>
         <div className="s-main-center">
-          <a className="button--ghost-alert button--tiny" href="/home">
+          <Link
+            className="button--ghost-alert button--tiny"
+            to={`/courses/${idCourse}`}
+          >
             {`$ ${price} USD`}
-          </a>
+          </Link>
         </div>
       </div>
     </article>
   );
 };
 
-Curso.propTypes = {
+Course.propTypes = {
   title: PropTypes.string,
   courseImage: PropTypes.string,
   teacher: PropTypes.string,
@@ -37,7 +51,7 @@ Curso.propTypes = {
   price: PropTypes.number,
 };
 
-Curso.defaultProps = {
+Course.defaultProps = {
   title: "Title not loaded",
   courseImage: image404,
   teacher: "Teacher nor found",
@@ -45,4 +59,4 @@ Curso.defaultProps = {
   price: 0,
 };
 
-export default Curso;
+export default Course;
