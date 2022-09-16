@@ -7,6 +7,7 @@ import CourseDetail from "./Pages/CourseDetail";
 import Menu from "./Molecules/Menu";
 import History from "./Pages/History";
 import Home from "./Pages/Home";
+import Proffesor from "./Pages/Proffesor";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="courses" element={<CourseGrid />} />
         <Route path="courses/:id" element={<CourseDetail />} />
         <Route path="history/:name" element={<History />} />
+        <Route path="proffesors" element={<Proffesor />} />
         <Route path="*" element={<Error_404 />} />
       </Routes>
     </>
