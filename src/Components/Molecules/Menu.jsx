@@ -9,6 +9,7 @@ const Menu = () => {
             <img
               className="main-logo"
               src="https://app.ed.team/images/logo/isotipo-color.svg"
+              alt="site"
             />
           </Link>
         </div>

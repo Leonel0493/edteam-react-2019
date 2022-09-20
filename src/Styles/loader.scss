@@ -1,0 +1,186 @@
+
+// LOADER VARIABLES
+$loader-size: 10rem;
+$loader-color--fill: #288dc1;
+$loader-color--bg: rgba(0,0,0,.04);
+$loader-thickness: 1rem;
+$loader-speed--outerSpin: 3s;
+$loader-speed--innerFill: 3s;
+
+////////////////////////////////////////////////////////
+// LOADER 
+
+.loader-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.loader {
+  position: absolute;
+  top: calc(50% - #{$loader-size / 2});
+  left: calc(50% - #{$loader-size / 2});
+  width: $loader-size;
+  height: $loader-size;
+  min-width: $loader-size;
+  min-height: $loader-size;
+  overflow: hidden;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    //width: calc(100% - #{$loader-thickness});
+    //height: calc(100% - #{$loader-thickness});
+    width: $loader-size - $loader-thickness;
+    height: $loader-size - $loader-thickness;
+    border: calc(#{$loader-thickness} / 2 ) solid $loader-color--bg;
+    border-radius: $loader-size / 2;
+  }
+}
+
+.loader--half {
+  width: calc(#{$loader-size} / 2);
+  height: $loader-size;
+  overflow: hidden;
+  &:after {
+    content: "";
+    display: block;
+    width: $loader-size - $loader-thickness;
+    height: $loader-size - $loader-thickness;
+    border: $loader-thickness / 2  solid transparent;
+    border-top-color: $loader-color--fill;
+    border-left-color: $loader-color--fill;
+    border-radius: $loader-size / 2;
+    transform: rotate(-45deg);
+  }
+}
+.loader--left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  &:after { animation: spin-left $loader-speed--innerFill cubic-bezier(0.15, 0.61, 0.355, 1) infinite }
+}
+
+.loader--right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: $loader-size / 2;
+  transform: rotate(180deg);
+  &:after { animation: spin-right $loader-speed--innerFill cubic-bezier(0.65, 0.025, 0.800, 0.09) infinite }
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+// CLASSES CONTAINING ANIMATION
+
+.spin {
+  -webkit-animation: spin $loader-speed--outerSpin linear infinite;
+	   -moz-animation: spin $loader-speed--outerSpin linear infinite;
+	    -ms-animation: spin $loader-speed--outerSpin linear infinite;
+	        animation: spin $loader-speed--outerSpin linear infinite;
+}
+
+.spin { // SPINS OBJECT CLOCKWISE - NONSTOP - CONTINUOUS 
+  // MORE SPEED MODIFIERS FOR LOADER
+  &.fast { 
+    $loader-speed--outerSpin: 1s;
+    $loader-speed--innerFill: 3.5s;
+    -webkit-animation: spin $loader-speed--outerSpin linear infinite;
+       -moz-animation: spin $loader-speed--outerSpin linear infinite;
+        -ms-animation: spin $loader-speed--outerSpin linear infinite;
+            animation: spin $loader-speed--outerSpin linear infinite;
+    & > div:after { animation-duration: $loader-speed--innerFill }
+  }
+  &.slow { 
+    $loader-speed--outerSpin: 5s;
+    $loader-speed--innerFill: 4s;
+    -webkit-animation: spin $loader-speed--outerSpin linear infinite;
+       -moz-animation: spin $loader-speed--outerSpin linear infinite;
+        -ms-animation: spin $loader-speed--outerSpin linear infinite;
+            animation: spin $loader-speed--outerSpin linear infinite;
+    & > div:after { animation-duration: $loader-speed--innerFill }
+  }
+  &.other { 
+    $loader-speed--outerSpin: 6s;
+    $loader-speed--innerFill: 1.8s;
+    -webkit-animation: spin $loader-speed--outerSpin linear infinite;
+       -moz-animation: spin $loader-speed--outerSpin linear infinite;
+        -ms-animation: spin $loader-speed--outerSpin linear infinite;
+            animation: spin $loader-speed--outerSpin linear infinite;
+    & > div:after { animation-duration: $loader-speed--innerFill }
+  }
+} 
+////////////////////////////////////////////////////////////////////////////////////
+// ANIMATIONS
+
+////////////////////////////////////////////////////////
+// SPIN LEFT SIDE OF CIRCLE
+@-webkit-keyframes spin-left {
+  0%, 25%  { -webkit-transform: rotate(-225deg); visibility: hidden }
+  50%, 75% { -webkit-transform: rotate(-45deg) }
+  100%     { -webkit-transform: rotate(135deg) }
+}
+@-moz-keyframes spin-left {
+  0%, 25%  { -moz-transform: rotate(-225deg); visibility: hidden }
+  50%, 75% { -moz-transform: rotate(-45deg) }
+  100%     { -moz-transform: rotate(135deg) }
+}
+@-ms-keyframes spin-left {
+  0%, 25%  { -ms-transform: rotate(-225deg); visibility: hidden }
+  50%, 75% { -ms-transform: rotate(-45deg) }
+  100%     { -ms-transform: rotate(135deg) }
+}
+@keyframes spin-left {
+  0%, 25%  { transform: rotate(-225deg); visibility: hidden }
+  50%, 75% { transform: rotate(-45deg) }
+  100%     { transform: rotate(135deg) }
+}
+////////////////////////////////////////////////////////
+// SPIN RIGHT SIDE OF CIRCLE
+@-webkit-keyframes spin-right {
+  0%        { -webkit-transform: rotate(-225deg) }
+  25%, 50%  { -webkit-transform: rotate(-45deg)  }
+  75%, 100% { -webkit-transform: rotate(135deg); visibility: hidden }
+}
+@-moz-keyframes spin-right {
+  0%        { -moz-transform: rotate(-225deg) }
+  25%, 50%  { -moz-transform: rotate(-45deg)  }
+  75%, 100% { -moz-transform: rotate(135deg); visibility: hidden }
+}
+@-ms-keyframes spin-right {
+  0%        { -ms-transform: rotate(-225deg) }
+  25%, 50%  { -ms-transform: rotate(-45deg)  }
+  75%, 100% { -ms-transform: rotate(135deg); visibility: hidden }
+}
+@keyframes spin-right {
+  0%        { transform: rotate(-225deg) }
+  25%, 50%  { transform: rotate(-45deg)  }
+  75%, 100% { transform: rotate(135deg); visibility: hidden }
+}
+
+////////////////////////////////////////////////////////
+// SPIN ENTIRE BLOCK
+@-webkit-keyframes spin {
+    from { -webkit-transform:rotate(0deg) }
+    to   { -webkit-transform:rotate(360deg) }
+}
+@-moz-keyframes spin {
+    from { -moz-transform:rotate(0deg) }
+    to   { -moz-transform:rotate(360deg) }
+}
+@-ms-keyframes spin {
+    from { -ms-transform:rotate(0deg) }
+    to   { -ms-transform:rotate(360deg) }
+}
+@keyframes spin {
+    from { transform:rotate(0deg) }
+    to   { transform:rotate(360deg) }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
